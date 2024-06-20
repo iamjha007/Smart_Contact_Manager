@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is About Page</h1>
+    <h2>Welcome to the About Page</h2>
+    <!-- using fragment -->
+    <div th:insert="~{fragment :: parent}"></div>
+
+    <!-- using fragment with argument -->
+    <div th:insert="~{fragment :: fragwithargs('satyam','delhi')}"></div>
+
+    <!-- using fragment with Html content passed as an argument-->
+    <!-- We can use not only tag name but class name and id as well -->
+    <div class="host-tag" th:replace="~{fragment :: fragwithhtmlcontent(~{::p})}">
+        <p>My Name is Satyam and I live in Delhi</p>
+    </div>
+
+
+
+</body>
+</html>

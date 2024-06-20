@@ -1,0 +1,23 @@
+<!-- using  simple fragment -->
+<div th:fragment="parent" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2>
+        this is parent fragment
+    </h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, excepturi.</p>
+</div>
+<!-- using fragment with argument -->
+<div th:fragment="fragwithargs(name,city)" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2>
+        this is fragment with args
+    </h2>
+    <p>My Nam is <span th:text="${name}"></span> and I live in <span th:text="${city}"></span></p>
+</div>
+
+<!-- using fragment with Html content passed as an argument-->
+<div th:fragment="fragwithhtmlcontent(content)" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2>
+        this is fragment with html content being passed
+    </h2>
+    <div th:replace="${content}"></div>
+</div>
+
