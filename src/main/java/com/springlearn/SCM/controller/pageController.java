@@ -14,6 +14,10 @@ public class pageController {
     public String about() {
         return "about";
     }
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
 
     @GetMapping("/services")
     public String services() {
