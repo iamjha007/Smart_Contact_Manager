@@ -1,14 +1,25 @@
 package com.springlearn.SCM.controller;
 
+import com.springlearn.SCM.entity.User;
+import com.springlearn.SCM.forms.UserForm;
+import com.springlearn.SCM.misc.Message;
+import com.springlearn.SCM.misc.MessageType;
+import com.springlearn.SCM.service.UserService;
+import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@Slf4j
 public class pageController {
 
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/about")
     public String about() {
@@ -34,9 +45,39 @@ public class pageController {
         return "login";
     }
 
-    @RequestMapping("/register")
-    public String register() {
+    @GetMapping("/register")
+    public String register(Model model) {
+
+        UserForm userForm= new UserForm();
+        model.addAttribute("userForm", userForm);
         return "register";
+    }
+
+    @PostMapping(value = "/do-register")
+    public String doRegister(@ModelAttribute UserForm userForm, BindingResult result, HttpSession session) {
+        System.out.println("do register");
+        System.out.println(userForm);
+
+        //create user to save in the database
+
+        User user = User.builder()
+                .name(userForm.getName())
+                .phone(userForm.getPhone())
+                .password(userForm.getPassword())
+                .email(userForm.getEmail())
+                .about(userForm.getAbout())
+                .profilePic("/resources/static/images/profile.png")
+                .build();
+        User savedUser = userService.saveUser(user);
+
+        Message message = Message.builder()
+                .message("User Registered Successfully!")
+                .type(MessageType.green)
+                .build();
+
+        session.setAttribute("message", message);
+        log.info("user registered successfully"+savedUser);
+        return "redirect:/register";
     }
 
     @RequestMapping("/hometest")

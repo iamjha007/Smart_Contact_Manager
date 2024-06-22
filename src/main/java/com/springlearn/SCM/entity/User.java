@@ -16,7 +16,7 @@ import java.util.List;
 public class User {
 
     @Id
-    private int id;
+    private String id;
 
     @Column(nullable = false)
     private String name;
@@ -27,11 +27,16 @@ public class User {
     private String about;
     private String profilePic;
     private String phone;
+    @Builder.Default
     private boolean enabled=false;
-    private boolean emailVerified=false;;
+    @Builder.Default
+    private boolean emailVerified=false;
+    @Builder.Default
     private boolean phoneVerified=false;
 
     //how the user logged in to our website
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
     private Providers provider=Providers.SELF;
     private String providerId;
 
