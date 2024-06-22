@@ -26,34 +26,38 @@
                 <p class="font-normal text-gray-400 dark:text-gray-400">
                     Signup to use Smart Contact Manager
                 </p>
-                <form data-th-action="@{'/do-register'}" method="post" data-th-object="${userForm}" class="mt-4" >
+                <form data-th-action="@{'/do-register'}" method="post" data-th-object="${userForm}" class="mt-4" novalidate >
                     <!-- Name field -->
                     <div class="mb-3">
                         <label for="name"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                         <input type="text" th:field="*{name}" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John Doe" required />
+                        <p data-th-if="${#fields.hasErrors('name')}" class="text-red-500" data-th-errors="*{name}"></p>
                     </div>
                     <!-- Email field -->
                     <div class="mb-3">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                         <input type="email" th:field="*{email}" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+                        <p data-th-if="${#fields.hasErrors('email')}" class="text-red-500" data-th-errors="*{email}"></p>
                     </div>
 
                     <div class="mb-3">
                         <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
                         <input type="text" id="phone" th:field="*{phone}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+91-XXXXXXXXXX" required />
+                        <p data-th-if="${#fields.hasErrors('phone')}" class="text-red-500" data-th-errors="*{phone}"></p>
                     </div>
 
                     <!-- Password field -->
                     <div class="mb-3">
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                         <input type="password" th:field="*{password}" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required />
+                        <p data-th-if="${#fields.hasErrors('password')}" class="text-red-500" data-th-errors="*{password}"></p>
                     </div>
                     <!-- About field -->
                     <div class="mb-3">
 
                         <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About</label>
                         <textarea id="about" rows="4" th:field="*{about}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write Here"></textarea>
-
+                        <p data-th-if="${#fields.hasErrors('about')}" class="text-red-500" data-th-errors="*{about}"></p>
                     </div>
                     <div class="mb-3 flex justify-center">
                         <button class="px-3 py-2 mx-2 text-white bg-gray-700 dark:bg-blue-600 rounded-lg hover:bg-blue-300 dark:hover:bg-blue-900" type="submit">Submit</button>

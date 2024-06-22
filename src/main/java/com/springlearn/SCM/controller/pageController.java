@@ -6,6 +6,7 @@ import com.springlearn.SCM.misc.Message;
 import com.springlearn.SCM.misc.MessageType;
 import com.springlearn.SCM.service.UserService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,10 +55,14 @@ public class pageController {
     }
 
     @PostMapping(value = "/do-register")
-    public String doRegister(@ModelAttribute UserForm userForm, BindingResult result, HttpSession session) {
+    public String doRegister(@Valid @ModelAttribute UserForm userForm, BindingResult result, HttpSession session) {
         System.out.println("do register");
         System.out.println(userForm);
 
+
+        if(result.hasErrors()){
+            return "register";
+        }
         //create user to save in the database
 
         User user = User.builder()
