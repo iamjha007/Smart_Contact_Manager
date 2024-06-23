@@ -22,6 +22,7 @@ public class Contact {
    private  String phone;
    private  String address;
    private  String description;
+   @Builder.Default
    private boolean favorite=false;
 
    @ManyToOne
@@ -29,5 +30,6 @@ public class Contact {
    private User user;
 
    @OneToMany(mappedBy = "contact",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+   @Builder.Default
    private List<SocialLink> links=new ArrayList<>();
 }
