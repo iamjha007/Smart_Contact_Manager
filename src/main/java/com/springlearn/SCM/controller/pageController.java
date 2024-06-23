@@ -22,6 +22,10 @@ public class pageController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
+    }
     @GetMapping("/about")
     public String about() {
         return "about";

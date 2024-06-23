@@ -2,10 +2,12 @@ package com.springlearn.SCM.service.impl;
 
 import com.springlearn.SCM.entity.User;
 import com.springlearn.SCM.exception.ResourceNotFoundException;
+import com.springlearn.SCM.misc.AppConstants;
 import com.springlearn.SCM.repository.UserRepository;
 import com.springlearn.SCM.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,13 +21,18 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     @Override
     public User saveUser(User user) {
         //have to generate the user id
         String id= UUID.randomUUID().toString();
         user.setId(id);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
+        user.setRolesList(List.of(AppConstants.ROLE_USER));
         return userRepository.save(user);
     }
 

@@ -10,8 +10,48 @@
 <body>
 
 <div id="content">
-    <p>this is the login page</p>
-    <p>welcome to login page</p>
+    <div class="grid grid-cols-12">
+        <div class="col-span-3">
+        </div>
+        <div class="col-span-6 mt-8 border-t-4 rounded-lg border-blue-500" >
+
+            <div  class="block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    Login Here
+                </h5>
+                <p class="font-normal text-gray-400 dark:text-gray-400">
+                    Login to use Smart Contact Manager
+                </p>
+                <div class="text-red-500" th:if="${param.error}">Invalid username or password</div>
+                <div class="text-green-500" th:if="${param.logout}">You have been logged out</div>
+                <form method="post" th:action="@{/authenticate}"  class="mt-4" novalidate >
+
+                    <!-- Email field -->
+                    <div class="mb-3">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email/Username</label>
+                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@youremail.com" required />
+<!--                        <p data-th-if="${#fields.hasErrors('email')}" class="text-red-500" data-th-errors="*{email}"></p>-->
+                    </div>
+
+
+                    <!-- Password field -->
+                    <div class="mb-3">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required />
+<!--                        <p data-th-if="${#fields.hasErrors('password')}" class="text-red-500" data-th-errors="*{password}"></p>-->
+                    </div>
+
+                    <div class="mb-3 flex justify-center">
+                        <button class="px-3 py-2 mx-2 text-white bg-gray-700 dark:bg-blue-600 rounded-lg hover:bg-blue-300 dark:hover:bg-blue-900" type="submit">Login</button>
+                        <button class="px-3 py-2 mx-2 text-white bg-gray-700 dark:bg-blue-600 rounded-lg hover:bg-blue-300 dark:hover:bg-blue-900" type="reset">Reset</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
 </div>
 </body>
 </html>
