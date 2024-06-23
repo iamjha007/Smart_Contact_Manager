@@ -75,6 +75,12 @@ public class SecurityConfig{
             logoutForm.logoutUrl("/logout");
             logoutForm.logoutSuccessUrl("/login?logout=true");
         });
+
+        //oauth configrations
+        http.oauth2Login(oauth->{
+            oauth.loginPage("/login");
+
+        });
         return http.build();
     }
 

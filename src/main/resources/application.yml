@@ -12,6 +12,15 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-name: google
+            client-id: 1054191936758-m269sc8r45lni33fabu2o61ifesenrg9.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile
 logging:
   level:
     org.springframework.security: DEBUG
