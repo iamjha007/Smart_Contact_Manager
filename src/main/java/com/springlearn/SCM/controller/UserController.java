@@ -1,11 +1,14 @@
 package com.springlearn.SCM.controller;
 
-import org.springframework.stereotype.Component;
+import com.springlearn.SCM.misc.LoggedInUserEmail;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@Slf4j
 @RequestMapping("/user")
 public class UserController {
 
@@ -15,8 +18,10 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String userProfile() {
-        return "user/userProfile";
+    public String userProfile(Authentication authentication) {
+
+        LoggedInUserEmail.getLoggedInUserEmail(authentication);
+        return "user/profile";
     }
 
     @GetMapping("/contact")

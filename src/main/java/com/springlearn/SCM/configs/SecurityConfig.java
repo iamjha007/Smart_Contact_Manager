@@ -1,6 +1,6 @@
 package com.springlearn.SCM.configs;
 
-import com.springlearn.SCM.service.SecurityCustomUserDetailService;
+import com.springlearn.SCM.service.impl.SecurityCustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class SecurityConfig{
+public class SecurityConfig {
 
     //user create and login usign java code with in memory service
 

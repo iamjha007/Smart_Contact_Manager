@@ -18,9 +18,19 @@ spring:
         registration:
           google:
             client-name: google
-            client-id:
-            client-secret:
-            scope: profile
+            client-id: 1054191936758-m269sc8r45lni33fabu2o61ifesenrg9.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - profile
+              - email
+          github:
+            client-name: github
+            client-id: Iv23li67aSvJoAGTYpYj
+            client-secret: 79710a973b9e98e44bf07967b79ac388e640f44c
+            scope:
+              - profile
+              - email
+
 logging:
   level:
     org.springframework.security: DEBUG

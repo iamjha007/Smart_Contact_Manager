@@ -1,4 +1,4 @@
-package com.springlearn.SCM.service;
+package com.springlearn.SCM.service.impl;
 
 import com.springlearn.SCM.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
